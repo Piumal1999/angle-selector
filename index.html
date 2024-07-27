@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Angle Selector</title>
+  </head>
+  <body>
+    <h1>Angle Selector</h1>
+
+    <div>
+      <div>
+        <label for="angle">Angle:</label>
+        <input type="number" id="angle" name="angle" value="0" />
+        <p id="message" hidden>Press Enter to simplify the angle value.</p>
+      </div>
+
+      <div>
+        <label for="slider">Angle Slider:</label>
+        <input
+          type="range"
+          id="slider"
+          name="slider"
+          min="0"
+          max="360"
+          value="0"
+        />
+      </div>
+
+      <div>
+        <label>Select Common Angles:</label>
+        <div>
+          <div>
+            <input type="radio" id="angle0" name="mode" value="0" />
+            <label for="angle0">0</label>
+          </div>
+
+          <div>
+            <input type="radio" id="angle45" name="mode" value="45" />
+            <label for="angle45">45</label>
+          </div>
+
+          <div>
+            <input type="radio" id="angle60" name="mode" value="60" />
+            <label for="angle60">60</label>
+          </div>
+
+          <div>
+            <input type="radio" id="angle90" name="mode" value="90" />
+            <label for="angle90">90</label>
+          </div>
+
+          <div>
+            <input type="radio" id="angle180" name="mode" value="180" />
+            <label for="angle180">180</label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
