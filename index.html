@@ -55,5 +55,69 @@
         </div>
       </div>
     </div>
+
+    <script>
+      const angleInput = document.getElementById("angle");
+      const slider = document.getElementById("slider");
+      const radioButtons = document.querySelectorAll('input[name="mode"]');
+      const message = document.getElementById("message");
+
+      function updateFromTextInput(isEnterPressed = false) {
+        let value = parseInt(angleInput.value);
+        if (isNaN(value)) value = 0;
+        if (value < 0) value = 0;
+        if (value > 360 && isEnterPressed != true) {
+          message.hidden = false;
+        } else {
+          message.hidden = true;
+        }
+        value = value % 360;
+
+        if (isEnterPressed == true) {
+          angleInput.value = value;
+          message.hidden = true;
+        }
+        slider.value = value;
+
+        updateRadioButtons(value);
+      }
+
+      function updateFromSlider() {
+        const value = parseInt(slider.value);
+        angleInput.value = value;
+
+        updateRadioButtons(value);
+      }
+
+      function updateFromRadioButtons() {
+        for (const radioButton of radioButtons) {
+          if (radioButton.checked) {
+            const value = parseInt(radioButton.value);
+            angleInput.value = value;
+            slider.value = value;
+            break;
+          }
+        }
+      }
+
+      function updateRadioButtons(value) {
+        for (const radioButton of radioButtons) {
+          radioButton.checked = parseInt(radioButton.value) === value;
+        }
+      }
+
+      function handleKeyPress(event) {
+        if (event.key === "Enter") {
+          updateFromTextInput(true);
+        }
+      }
+
+      angleInput.addEventListener("input", updateFromTextInput);
+      angleInput.addEventListener("keydown", handleKeyPress);
+      slider.addEventListener("input", updateFromSlider);
+      for (const radioButton of radioButtons) {
+        radioButton.addEventListener("change", updateFromRadioButtons);
+      }
+    </script>
   </body>
 </html>
